@@ -1,0 +1,20 @@
+.root {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imgBlock {
+    max-width: 50%;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.info {
+    min-width: 30%;
+}

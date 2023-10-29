@@ -5,13 +5,16 @@ import qs from "qs";
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { selectFilter } from '../redux/filter/selectors';
-import { setCurrentPage, setFilters } from '../redux/filter/slice'
-import { fetchPizzas } from '../redux/pizza/asyncActions'
-import { SearchPizzaParams } from '../redux/pizza/types';
-import { selectPizzaData } from '../redux/pizza/selectors';
+import {
+    setCurrentPage,
+    //  setFilters
+} from '../redux/filter/slice'
+import { fetchPizzas } from '../redux/cars/asyncActions'
+// import { SearchPizzaParams } from '../redux/pizza/types';
+import { selectPizzaData } from '../redux/cars/selectors';
 
-import Categories from '../components/Categories';
-import SortPopup, { LIST } from '../components/Sort';
+// import Categories from '../components/Categories';
+// import SortPopup, { LIST } from '../components/Sort';
 import PizzaBlock from '../components/pizza-block';
 import Skeleton from '../components/pizza-block/Skeleton';
 import Pagination from '../components/pagination';
@@ -46,22 +49,22 @@ const Home: React.FC = () => {
             }));
     }
 
-    useEffect(() => {
-        if (window.location.search) {
-            const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
-            const sort = LIST.find(obj => obj.sort === params.sortBy);
+    // useEffect(() => {
+    //     if (window.location.search) {
+    //         const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
+    //         const sort = LIST.find(obj => obj.sort === params.sortBy);
 
-            dispatch(
-                setFilters({
-                    searchValue: params.search || '',
-                    categoryId: Number(params.category) || 0,
-                    currentPage: Number(params.currentPage),
-                    sortType: sort || LIST[0],
-                })
-            )
-            isSearch.current = true;
-        }
-    }, [dispatch])
+    //         dispatch(
+    //             setFilters({
+    //                 searchValue: params.search || '',
+    //                 categoryId: Number(params.category) || 0,
+    //                 currentPage: Number(params.currentPage),
+    //                 sortType: sort || LIST[0],
+    //             })
+    //         )
+    //         isSearch.current = true;
+    //     }
+    // }, [dispatch])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -99,14 +102,14 @@ const Home: React.FC = () => {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories />
-                <SortPopup />
+                {/* <Categories /> */}
+                {/* <SortPopup /> */}
             </div>
-            <h2 className="content__title">Все пиццы</h2>
+            <h2 className="content__title">Все автомобили</h2>
             {status === 'error' ? (
                 <div className="content__error-info">
                     <h2>Произошла ошибка 😕</h2>
-                    <p>К сожалению, не удалось получить пиццы. Попробуйте повторить попытку позже.</p>
+                    <p>К сожалению, не удалось получить данные. Попробуйте повторить попытку позже.</p>
                 </div>
             ) : (
                 <div className="content__items">

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import { addItem } from '../../redux/cart/slice'
-import { selectCartItemById } from "../../redux/cart/selectors";
-import { CartItem } from "../../redux/cart/types";
+// import {
+//     useSelector,
+//     useDispatch
+// } from 'react-redux'
+// import { addItem } from '../../redux/cart/slice'
+// import { selectCartItemById } from "../../redux/cart/selectors";
+// import { CartItem } from "../../redux/cart/types";
 import { Link } from 'react-router-dom';
 
 const TYPE_NAMES = ['тонкое', 'традиционное'];
-// const SIZE_VALUES = ['260', '30', '40'];
 
 type PizzaBlockProps = {
     id: string,
@@ -20,32 +22,32 @@ type PizzaBlockProps = {
 const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, imageUrl, price, sizes, types }) => {
     const [activeType, setActiveType] = useState(0)
     const [activeSize, setActiveSize] = useState(0)
-    const dispatch = useDispatch()
-    const cartItem = useSelector(selectCartItemById(id))
-    const addedCount = cartItem ? cartItem.count : 0;
+    // const dispatch = useDispatch()
+    // const cartItem = useSelector(selectCartItemById(id))
+    // const addedCount = cartItem ? cartItem.count : 0;
 
 
-    const addPizza = () => {
-        const item: CartItem = {
-            id,
-            title,
-            price,
-            imageUrl,
-            types: TYPE_NAMES[activeType],
-            sizes: sizes[activeSize],
-            count: 0,
-        }
-        dispatch(addItem(item));
-    }
+    // const addPizza = () => {
+    //     const item: CartItem = {
+    //         id,
+    //         title,
+    //         price,
+    //         imageUrl,
+    //         types: TYPE_NAMES[activeType],
+    //         sizes: sizes[activeSize],
+    //         count: 0,
+    //     }
+    //     dispatch(addItem(item));
+    // }
 
     return (
         <div className="pizza-block-wrapper">
             <div className="pizza-block">
-                <Link to={"/react-pizza/build/pizza/" + id} >
+                <Link to={"car/" + id} >
                     <img
                         className="pizza-block__image"
                         src={imageUrl}
-                        alt="Pizza"
+                        alt="car"
                     />
                     <h4 className="pizza-block__title">{title}</h4>
                 </Link>
@@ -79,7 +81,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, imageUrl, price, siz
                 </div>
                 <div className="pizza-block__bottom">
                     <div className="pizza-block__price">от {price} ₽</div>
-                    <button onClick={addPizza} className="button button--outline button--add" >
+                    {/* <button onClick={addPizza} className="button button--outline button--add" >
                         <svg
                             width="12"
                             height="12"
@@ -95,7 +97,7 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({ id, title, imageUrl, price, siz
                         <span>Добавить</span>
                         {addedCount > 0 && <i>{addedCount}</i>}
 
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

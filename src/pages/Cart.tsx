@@ -1,12 +1,12 @@
-import React from 'react'
+// import React from 'react'
 
-import CartBlock from '../components/cart-block';
+// import CartBlock from '../components/cart-block';
 
-const Cart = () => {
-    return (
-        <CartBlock />
-    )
-}
+// const Cart = () => {
+//     return (
+//         <CartBlock />
+//     )
+// }
 
 
-export default Cart;
+// export default Cart;

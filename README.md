@@ -1,7 +1,7 @@
 # Cars App (Juzt studio)
 Тестовое задачия в Juzt studio на позицию Frontend-разработчик
 
-https://shushu9.github.io/react-pizza/build/
+https://shushu9.github.io/juzt-studio-test/build/
 
 ## Технологии
 
