@@ -1,0 +1,28 @@
+.root {
+  width: 100%;
+  margin-bottom: 20px;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image {
+  width: 150px;
+}
+
+.brand {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.year {
+  font-size: 18px;
+  font-weight: 600;
+}

@@ -1,14 +1,3 @@
-
-export type PizzaItem = {
-    id: string,
-    title: string,
-    price: number,
-    imageUrl: string,
-    sizes: number[],
-    types: number[],
-    rating: number
-};
-
 export type CarItem = {
     id: string,
     imageUrl: string;
@@ -22,14 +11,6 @@ export type CarItem = {
     range?: number;
 };
 
-export type SearchPizzaParams = {
-    sortBy: string,
-    order: string,
-    category: string,
-    search: string,
-    currentPage: string,
-};
-
 export type SearchCarParams = {
     sortBy: string,
     order: string,
@@ -37,12 +18,6 @@ export type SearchCarParams = {
     search: string,
     currentPage: number,
 };
-
-export interface PizzaSliceState {
-    items: PizzaItem[],
-    status: Status,
-}
-
 export interface CarSliceState {
     items: CarItem[],
     status: Status,

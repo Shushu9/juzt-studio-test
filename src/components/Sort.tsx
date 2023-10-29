@@ -7,9 +7,7 @@ import { useRef } from "react";
 
 import { SortType } from "../redux/filter/types";
 import { SortPropertyEnum } from "../redux/filter/types";
-// type PopUpClick = MouseEvent & {
-//   path: Node[],
-// };
+
 
 export const LIST: SortType[] = [
   { name: 'популярности (DESC)', sort: SortPropertyEnum.RATING_DESC },
@@ -30,22 +28,6 @@ const SortPopup: React.FC = React.memo(() => {
     dispatch(setSortType(el))
     setIsOpen(() => false)
   }
-
-  // useEffect(() => {
-  //   const handleClickOutside = (event: MouseEvent) => {
-  //     const _event = event as PopUpClick;
-
-  //     if (sortRef.current && !_event.path.includes(sortRef.current)) {
-  //       setIsOpen(() => false)
-  //     }
-  //   }
-
-  //   document.body.addEventListener('click', handleClickOutside)
-
-  //   return () => {
-  //     document.body.removeEventListener('click', handleClickOutside);
-  //   }
-  // }, [])
 
   return (
     <div className="sort" ref={sortRef}>

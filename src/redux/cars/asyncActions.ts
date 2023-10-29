@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { PizzaItem, SearchPizzaParams } from './types';
+import { CarItem, SearchCarParams } from './types';
 
-export const fetchPizzas = createAsyncThunk<PizzaItem[], SearchPizzaParams>('pizza/fetchPizzasStatus', async (params, thunkAPI) => {
+export const fetchCars = createAsyncThunk<CarItem[], SearchCarParams>('pizza/fetchPizzasStatus', async (params) => {
     const {
         order,
         sortBy,
@@ -10,11 +10,7 @@ export const fetchPizzas = createAsyncThunk<PizzaItem[], SearchPizzaParams>('piz
         search,
         currentPage,
     } = params
-    const { data } = await axios.get<PizzaItem[]>(`https://651701c309e3260018ca9138.mockapi.io/items?page=${currentPage}&limit=10&${category}&sortBy=${sortBy}&order=${order}${search}`);
+    const { data } = await axios.get<CarItem[]>(`https://651701c309e3260018ca9138.mockapi.io/elements?page=${currentPage}&limit=10&${category}&sortBy=${sortBy}&order=${order}${search}`);
 
-    // if (data.length === 0) {
-    //     return thunkAPI.rejectWithValue('Пиццы пустые')
-    // }
-    // return thunkAPI.fulfillWithValue(data);
     return data;
 })

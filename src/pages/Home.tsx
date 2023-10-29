@@ -9,14 +9,15 @@ import {
     setCurrentPage,
     //  setFilters
 } from '../redux/filter/slice'
-import { fetchPizzas } from '../redux/cars/asyncActions'
+import { fetchCars } from '../redux/cars/asyncActions'
 // import { SearchPizzaParams } from '../redux/pizza/types';
-import { selectPizzaData } from '../redux/cars/selectors';
+import { selectCarData } from '../redux/cars/selectors';
 
-// import Categories from '../components/Categories';
-// import SortPopup, { LIST } from '../components/Sort';
-import PizzaBlock from '../components/pizza-block';
-import Skeleton from '../components/pizza-block/Skeleton';
+import Categories from '../components/Categories';
+import SortPopup, { LIST } from '../components/Sort';
+// import PizzaBlock from '../components/pizza-block';
+import CarBlock from '../components/car-block';
+import Skeleton from '../components/car-block/Skeleton';
 import Pagination from '../components/pagination';
 import { useAppDispatch } from '../redux/store';
 
@@ -24,7 +25,7 @@ import { useAppDispatch } from '../redux/store';
 const Home: React.FC = () => {
     const isSearch = useRef(false);
     const isMounted = useRef(false);
-    const { items, status } = useSelector(selectPizzaData)
+    const { items, status } = useSelector(selectCarData)
     const { categoryId, sortType, currentPage, searchValue } = useSelector(selectFilter)
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -33,19 +34,19 @@ const Home: React.FC = () => {
         dispatch(setCurrentPage(num))
     }
 
-    const getPizzas = async () => {
+    const getCars = async () => {
         const order = sortType.sort.includes('-') ? 'asc' : 'desc';
         const sortBy = sortType.sort.replace('-', '');
         const category = categoryId > 0 ? 'category=' + categoryId : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
         dispatch(
-            fetchPizzas({
+            fetchCars({
                 order,
                 sortBy,
                 category,
                 search,
-                currentPage: String(currentPage),
+                currentPage,
             }));
     }
 
@@ -53,7 +54,6 @@ const Home: React.FC = () => {
     //     if (window.location.search) {
     //         const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
     //         const sort = LIST.find(obj => obj.sort === params.sortBy);
-
     //         dispatch(
     //             setFilters({
     //                 searchValue: params.search || '',
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
         window.scrollTo(0, 0)
 
         if (!isSearch.current) {
-            getPizzas()
+            getCars()
         }
 
         isSearch.current = false;
@@ -92,18 +92,18 @@ const Home: React.FC = () => {
     }, [categoryId, currentPage, navigate, sortType, searchValue])
 
     const pizzas = items.map((data) => (
-        <PizzaBlock
+        <CarBlock
             {...data}
             key={data.id} />
     ))
 
-    const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
+    const skeletons = [...new Array(10)].map((_, i) => <Skeleton key={i} />);
 
     return (
         <div className="container">
             <div className="content__top">
-                {/* <Categories /> */}
-                {/* <SortPopup /> */}
+                <Categories />
+                <SortPopup />
             </div>
             <h2 className="content__title">Все автомобили</h2>
             {status === 'error' ? (
