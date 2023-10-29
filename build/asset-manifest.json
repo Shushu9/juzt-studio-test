@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/juzt-studio-test/build/static/css/main.243127a4.css",
+    "main.js": "/juzt-studio-test/build/static/js/main.fafdf464.js",
+    "index.html": "/juzt-studio-test/build/index.html",
+    "main.243127a4.css.map": "/juzt-studio-test/build/static/css/main.243127a4.css.map",
+    "main.fafdf464.js.map": "/juzt-studio-test/build/static/js/main.fafdf464.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.243127a4.css",
+    "static/js/main.fafdf464.js"
+  ]
+}
