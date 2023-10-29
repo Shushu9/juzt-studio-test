@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setSortType } from '../redux/filter/slice'
 import { selectFilter } from "../redux/filter/selectors";
-import { useRef } from "react";
 
 import { SortType } from "../redux/filter/types";
 import { SortPropertyEnum } from "../redux/filter/types";
 
-
 export const LIST: SortType[] = [
-  { name: 'популярности (DESC)', sort: SortPropertyEnum.RATING_DESC },
-  { name: 'популярности (ASC)', sort: SortPropertyEnum.RATING_ASC },
+  { name: 'бренду (DESC)', sort: SortPropertyEnum.BRAND_DESC },
+  { name: 'бренду (ASC)', sort: SortPropertyEnum.BRAND_ASC },
   { name: 'цене (DESC)', sort: SortPropertyEnum.PRICE_DESC },
   { name: 'цене (ASC)', sort: SortPropertyEnum.PRICE_ASC },
-  { name: 'алфавиту (DESC)', sort: SortPropertyEnum.TITLE_DESC },
-  { name: 'алфавиту (ASC)', sort: SortPropertyEnum.TITLE_ASC },
+  { name: 'году выпуска (DESC)', sort: SortPropertyEnum.YEAR_DESC },
+  { name: 'году выпуска (ASC)', sort: SortPropertyEnum.YEAR_ASC },
 ];
 
 const SortPopup: React.FC = React.memo(() => {

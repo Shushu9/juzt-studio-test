@@ -7,20 +7,18 @@ import { useNavigate } from 'react-router-dom';
 import { selectFilter } from '../redux/filter/selectors';
 import {
     setCurrentPage,
-    //  setFilters
+    setFilters
 } from '../redux/filter/slice'
 import { fetchCars } from '../redux/cars/asyncActions'
-// import { SearchPizzaParams } from '../redux/pizza/types';
+import { SearchCarParams } from '../redux/cars/types';
 import { selectCarData } from '../redux/cars/selectors';
+import { useAppDispatch } from '../redux/store';
 
 import Categories from '../components/Categories';
 import SortPopup, { LIST } from '../components/Sort';
-// import PizzaBlock from '../components/pizza-block';
 import CarBlock from '../components/car-block';
 import Skeleton from '../components/car-block/Skeleton';
 import Pagination from '../components/pagination';
-import { useAppDispatch } from '../redux/store';
-
 
 const Home: React.FC = () => {
     const isSearch = useRef(false);
@@ -50,21 +48,21 @@ const Home: React.FC = () => {
             }));
     }
 
-    // useEffect(() => {
-    //     if (window.location.search) {
-    //         const params = qs.parse(window.location.search.substring(1)) as unknown as SearchPizzaParams;
-    //         const sort = LIST.find(obj => obj.sort === params.sortBy);
-    //         dispatch(
-    //             setFilters({
-    //                 searchValue: params.search || '',
-    //                 categoryId: Number(params.category) || 0,
-    //                 currentPage: Number(params.currentPage),
-    //                 sortType: sort || LIST[0],
-    //             })
-    //         )
-    //         isSearch.current = true;
-    //     }
-    // }, [dispatch])
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1)) as unknown as SearchCarParams;
+            const sort = LIST.find(obj => obj.sort === params.sortBy);
+            dispatch(
+                setFilters({
+                    searchValue: params.search || '',
+                    categoryId: Number(params.category) || 0,
+                    currentPage: Number(params.currentPage),
+                    sortType: sort || LIST[0],
+                })
+            )
+            isSearch.current = true;
+        }
+    }, [dispatch])
 
     useEffect(() => {
         window.scrollTo(0, 0)

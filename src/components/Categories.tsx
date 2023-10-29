@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setCategoryId, setCurrentPage } from '../redux/filter/slice'
 import { selectFilter } from '../redux/filter/selectors';
 
-const categories = ['Все', 'Красные', 'Черные', 'Белые', 'BMW', 'Tesla']
+const categories = ['Все', 'Синие', 'Красные', 'Черные', 'Белые', 'Зеленые']
 
 const Categories: React.FC = React.memo(() => {
   const { categoryId, currentPage } = useSelector(selectFilter)

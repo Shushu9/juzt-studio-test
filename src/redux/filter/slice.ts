@@ -7,8 +7,8 @@ const initialState: FilterSliceState = {
     currentPage: 1,
     searchValue: '',
     sortType: {
-        name: 'популярности (DESC)',
-        sort: SortPropertyEnum.RATING_ASC,
+        name: 'бренду (DESC)',
+        sort: SortPropertyEnum.BRAND_DESC,
     },
 }
 
@@ -37,8 +37,8 @@ export const filterSlice = createSlice({
                 state.categoryId = 0;
                 state.currentPage = 1;
                 state.sortType = {
-                    name: 'популярности (DESC)',
-                    sort: SortPropertyEnum.RATING_ASC,
+                    name: 'бренду (DESC)',
+                    sort: SortPropertyEnum.BRAND_DESC,
                 };
             }
 
